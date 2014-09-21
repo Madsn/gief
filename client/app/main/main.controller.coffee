@@ -18,5 +18,14 @@ angular.module 'giefApp'
   $scope.deleteThing = (thing) ->
     $http.delete '/api/things/' + thing._id
 
+  $scope.updateThing = (thing) ->
+    $http.put '/api/things/' + thing._id,
+      name: thing.name
+      price: thing.price
+      added: thing.added
+      url: thing.url
+      img: thing.img
+
+
   $scope.$on '$destroy', ->
     socket.unsyncUpdates 'thing'
